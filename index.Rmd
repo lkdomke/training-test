@@ -17,7 +17,7 @@ knitr::opts_chunk$set(echo = TRUE)
 - Discussion
 
 
-```{r graphics, fig.height=5, fig.width=3, echo=FALSE}
-knitr::include_graphics("Barnes_PH_ATF_IMG_1828.JPG")
+```{r graphics, fig.height=3, fig.width=5, echo=FALSE}
+knitr::include_graphics("Katie_Zach_Helen_PullingOtoliths_KB__2696.jpg")
 ```
 
