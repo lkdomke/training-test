@@ -21,6 +21,11 @@ knitr::opts_chunk$set(echo = TRUE)
 2. Description of CB repository
 3. Some conclusion
 
+Well here's another list of my favourite types of groundfish
+1. halibut
+2. probably not arrowtooth
+3. rockfish
+
 ```{r, out.width="50%", echo=FALSE, fig.align='center'}
 
 knitr::include_graphics("Katie_Zach_Helen_PullingOtoliths_KB__2696.jpg")
