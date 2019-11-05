@@ -1,0 +1,343 @@
+---
+title: "Predation and trophic stability in the Gulf of Alaska"
+author: "Cheryl Barnes"
+date: "11/4/2019"
+output: html_document
+editor_options: 
+  chunk_output_type: inline
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+### Citation:
+Barnes, CL, Beaudreau AH, Dorn MW, Holsman KK, and Mueter FJ. Accepted. Development of a predation index to assess trophic stability in the Gulf of Alaska. Ecological Applications. Forthcoming.
+
+### Overview:
+##### Manuscript Abstract (for now)
+Predation can have substantial and long-term effects on the population dynamics of ecologically important prey. Diverse predator assemblages, however, may produce stabilizing (*i.e.*, ‘portfolio’) effects on prey abundance when consumption or biomass vary asynchronously among predator species. We developed a predation index for a dominant forage species to quantify portfolio effects and better understand diversity-stability relationships in a large marine ecosystem that has recently undergone considerable changes in community composition. We selected Walleye Pollock (*Gadus chalcogrammus*) as our focal species because they support some of the largest, most valuable commercial fisheries in the world and serve as essential prey for a number of economically and culturally important species. Thus, there are sufficient data for pollock with which to test ecological theories in an empirical setting. Spatially-explicit predation indices incorporated annual variations in predator biomass, bioenergetics-based rations, and age-specific proportions of pollock consumed by key groundfishes in the Gulf of Alaska (1990 to 2015). We found that Arrowtooth Flounder (*Atheresthes stomias*) was, by far, the dominant pollock predator. We also found synchronous trends in consumption among predator species, indicating a lack of portfolio effects in the region. The combination of a single dominant predator and synchronous predator dynamics among groundfishes suggests strong top-down control over pollock in the Gulf of Alaska. Additionally, temporal shifts from asynchronous to synchronous consumption suggest diminished trophic stability for the demersal fish community at the basin scale. At finer spatial scales (*i.e.*, in the Chirikof and Kodiak statistical areas), however, we observed a decrease in synchrony through time. This emphasizes the importance of spatiotemporal heterogeneity in maintaining food web structure and function. Finally, total pollock consumption was highly variable and often exceeded assessment-based estimates of productivity. We assert that using our holistic and empirically-derived predation index as a modifier of assumed constant natural mortality would provide a practical method for incorporating ecological information into single species stock assessments.
+
+### Data Description:
+Here, we calculate indices of predation (kg per year) on Walleye Pollock by five key groundfish predators: Arrowtooth Flounder, Pacific Cod, Pacific Halibut, Sablefish, and Walleye Pollock conspecifics. Four spatial scales were evaluated, but only the area encompassed by the stock assessment for Gulf of Alaska pollock are shown here. 
+
+We used standardized survey data procured from the Alaska Fisheries Science Center (National Marine Fisheries Service, National Oceanic and Atmospheric Association [NOAA]) and International Pacific Halibut Commission to estimate relative predator densities in the study area. Bottom trawl survey data (all species; 1990 to 2017) were collected by the Resource Assessment and Conservation Engineering (RACE) Division and are publicly accessible [here](https://www.afsc.noaa.gov/RACE/groundfish/survey_data/data.htm). For RACE survey methods, von Szalay *et al.* 2016. Longline survey data for Sablefish (1990 to 2017) were collected by the Alaska Fisheries Science Center's Marine Ecology & Stock Assessment (MESA) program and can be found [here](https://www.afsc.noaa.gov/maps/longline/Map.php). For MESA survey methods, [click here](https://www.afsc.noaa.gov/ABL/MESA/pdf/LSprotocols.pdf). Setline survey data for Pacific Halibut (1998 to 2017) were collected by the International Pacific Halibut Commission and are publicly available [here](https://iphc.int/data/fiss-data-query). For IPHC survey methods, see Soderlund *et al.* 2012. 
+
+Food habits data (1990 to 2013) were used to estimate mean annual rations and age-specific proportions of pollock consumed. These data were provided by the Resource Ecology and Ecosystem Modeling (REEM) Program and are publicly accessible [here](https://access.afsc.noaa.gov/REEM/WebDietData/DietDataIntro.php). Total biomass estimates were obtained from the most recent stock assessment (Barbeaux *et al.* 2017, Dorn *et al.* 2017, Hanselman *et al.* 2017, Spies *et al.* 2017, Stewart and Hicks 2017). All the data necessary to complete the following analyses can be found in the 'Data' folder. See von Szalay and Raring (2016) and Livingston et al. (2017) for data collection methods.
+  
+
+### References:
+    Barbeaux S, Aydin K, Fissel B, Holsman K, Palsson W. 2017. Assessmenty of the Pacific cod stock in the Gulf of Alaska. NPFMC Gulf of Alaska SAFE Rep. 189-332.
+
+    Dorn M, Aydin K, Fissel B, Jones D, McCarthy A, Palsson W, Spalinger K. Assessment of the Walleye Pollock stock in the Gulf of Alaska. NPFMC Gulf of Alaska SAFE Rep. 47-182.
+
+    Hanselman DH, Rodgveller CJ, Lunsford CR, Fenske KH. 2017. Assessment of the Sablefish stock in Alaska. NPFMC Bering Sea, Aleutian Islands and Gulf of Alaska SAFE Rep. 327-502.
+
+    Livingston PA, Aydin K, Buckley TW, Lang GM, Yang MS, Miller BS. Quantifying food web interactions in the North Pacific – a data-based approach. Environ Biol Fishes. 2017;100(4):443–470.
+
+    Spies I, Aydin K, Ianelli JN, Palsson W. 2017. Assessment of the Arrowtooth Flounder stock in the Gulf of Alaska. NPFMC Gulf of Alaska SAFE Rep. 749-846.
+
+    Stewart I, Hicks A. 2017. Assessment of the Pacific halibut (*Hippoglossus stenolepis*) stock at the end of 2017. IPHC-2018-AM094-10. 25 pp.
+
+    von Szalay PG, Raring NW. Data report: 2015 Gulf of Alaska bottom trawl survey. Seattle (WA): National Oceanic and Atmospheric Administration; 2016. Technical Memorandum: NMFS-AFSC-325. Sponsored by the US Department of Commerce.
+
+### Data Synthesis:
+Input predation indices for Arrowtooth, Flounder, Pacific Cod, Pacific Halibut, Sablefish, and Walleye Pollock (pollock assessment area only). Script files used to calculate species-specific indices and individual index components can be found at: https://github.com/cheryl-barnes/PollockPredation.
+```{r, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
+setwd("~/Documents/UAF/Dissertation/GitHub/Predation_TrophicStability/")
+source("PredationIndices_ATF_PollAssess.R")
+source("PredationIndices_PC_PollAssess.R")
+source("PredationIndices_PH_PollAssess.R")
+source("PredationIndices_SBL_PollAssess.R")
+source("PredationIndices_WEP_PollAssess.R")
+```
+
+Calculate variance ratios (VR; estimates of synchrony). Portfolio effect = 1 - VR.
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+# Calculate species-specific variances:
+ATFpredData = ATFpredWEP_age_t_max
+ATFpredData$Species = "ATF"
+ATFvarData = subset(ATFpredData, AgeClass == " All Ages")
+ATFvar = var(ATFvarData$millMT)
+
+PCpredData = PCpredWEP_age_t_max
+PCpredData$Species = "PC"
+PCvarData = subset(PCpredData, AgeClass == " All Ages")
+PCvar = var(PCvarData$MT)
+
+PHpredData = PHpredWEP_age_t_max
+PHpredData$Species = "PH"
+PHvarData = subset(PHpredData, AgeClass == " All Ages")
+PHvar = var(PHvarData$MT)
+
+SBLpredData = SBLpredWEP_age_t_max
+SBLpredData$Species = "SBL"
+SBLvarData = subset(SBLpredData, AgeClass == " All Ages")
+SBLvar = var(SBLvarData$MT)
+
+WEPpredData = WEPpredWEP_age_t_max
+WEPpredData$Species = "WEP"
+WEPvarData = subset(WEPpredData, AgeClass == " All Ages")
+WEPvar = var(WEPvarData$MT)
+
+# Combine species-specific variances:
+AllPredData = rbind(ATFpredData, PCpredData, PHpredData, SBLpredData, WEPpredData)
+AllPredData_mod = subset(AllPredData, AgeClass == " All Ages")
+
+# Estimate maximum ("community-level") variance:
+SumAll_MT = AllPredData_mod %>%
+  group_by(Year) %>%
+  summarise(sumMT = sum(MT))
+
+VarAll_MT = SumAll_MT %>%
+  summarise(var = var(sumMT))
+VarAll_MT = as.data.frame(VarAll_MT)
+
+VarPred_MT = AllPredData_mod %>%
+  group_by(Species) %>%
+  summarise(var = var(MT))
+VarPred_MT = as.data.frame(VarPred_MT)
+
+# Calculate synchrony (i.e., variance ratio), entire time series:
+  # VR: 1 - VR = portfolio effect)
+Sync = VarAll_MT$var / sum(VarPred_MT$var)
+
+  
+  
+# Calculate synchrony (2003 and earlier):
+AllPredData_syn1990 = subset(AllPredData_mod, Year < 2005)
+
+SumAll_MT1990 = AllPredData_syn1990 %>%
+  group_by(Year) %>%
+  summarise(sumMT = sum(MT))
+
+VarAll_MT1990 = SumAll_MT1990 %>%
+  summarise(var = var(sumMT))
+VarAll_MT1990 = as.data.frame(VarAll_MT1990)
+
+VarPred_MT1990 = AllPredData_syn1990 %>%
+  group_by(Species) %>%
+  summarise(var = var(MT))
+VarPred_MT1990 = as.data.frame(VarPred_MT1990)
+
+Sync1990 = VarAll_MT1990$var / sum(VarPred_MT1990$var)
+
+# Calculate synchrony (2005 and later):
+AllPredData_syn2005 = subset(AllPredData_mod, Year > 2003)
+
+SumAll_MT2005 = AllPredData_syn2005 %>%
+  group_by(Year) %>%
+  summarise(sumMT = sum(MT))
+
+VarAll_MT2005 = SumAll_MT2005 %>%
+  summarise(var = var(sumMT))
+VarAll_MT2005 = as.data.frame(VarAll_MT2005)
+
+VarPred_MT2005 = AllPredData_syn2005 %>%
+  group_by(Species) %>%
+  summarise(var = var(MT))
+VarPred_MT2005 = as.data.frame(VarPred_MT2005)
+
+Sync2005 = VarAll_MT2005$var / sum(VarPred_MT2005$var)
+```
+
+### Results:
+
+Portfolio effect estimates were **`r paste(signif(Sync, digits=3))`** for the entire time series, **`r paste(signif(Sync1990, digits=3))`** for the earlier time period (1990 to 2003) and **`r paste(signif(Sync2005, digits=3))`** for the later time period.
+
+Test for correlations in consumption among pollock predators (only signicant correlations are shown):
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, results="hide"}
+AllPredData_wide = dcast(AllPredData_mod, Year ~  Species, value.var = "millMT", fun.aggregrate = sum) # long to wide format
+
+# Quantify correlations in consumption among pollock predators:
+require(Hmisc)
+cor(AllPredData_wide[2:6], method="pearson")
+CorrMat = rcorr(as.matrix(AllPredData_wide[2:6]), type="pearson")
+require(corrplot)
+corrplot(CorrMat$r, type="upper", order="hclust", diag=F, tl.pos="td", tl.cex=1, tl.col="black", p.mat = CorrMat$P, sig.level = 0.1, insig = "blank", method="number")
+
+# Estimate "total" consumption of pollock within the study area:
+AllPredData_wide$SumMT = AllPredData_wide$ATF + AllPredData_wide$PC + AllPredData_wide$PH + AllPredData_wide$SBL + AllPredData_wide$WEP
+
+# Calculate coefficients of variation:
+require(dplyr)
+AllPredData %>%
+  group_by(Species) %>%
+  summarise(CV = sd(na.omit(millMT))/mean(na.omit(millMT)))
+
+# Estimate "total" consumption of pollock within the study area:
+SumPredWEP_t = AllPredData %>%
+  group_by(Year, AgeClass) %>%
+  summarise(sumMT = sum(MT))
+SumPredWEP_t = as.data.frame(SumPredWEP_t)
+
+SumPredWEP_t_3plus = subset(SumPredWEP_t, AgeClass==" 3+")
+SumPredWEP_t_3plus$sumMillMT = SumPredWEP_t_3plus$sumMT / 1000000
+
+SumPredWEP_t_3plus$WEPbio = c(
+  1505101,
+  1760337,
+  1088596,
+  768836,
+  653979,
+  1021000,
+  739658,
+  616901,
+  1211075,
+  1377885,
+  1343969,
+  1810879)
+SumPredWEP_t_3plus$WEP_millMT = SumPredWEP_t_3plus$WEPbio / 1000000
+
+# Calculate predation as proportion of total biomass (3+ from stock assessment):
+SumPredWEP_t_3plus$propPred = round(SumPredWEP_t_3plus$sumMillMT / SumPredWEP_t_3plus$WEP_millMT, digits=2)
+```
+
+
+Compare "total" consumption (blue solid line; age-3+ pollock only) to stock assessment-based estimates of total biomass (black dashed line) within the study area.
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+WEP_Pred_3plus_Bio = ggplot(SumPredWEP_t_3plus, aes(x = Year)) +
+  geom_line(aes(y=sumMillMT), linetype="solid", lwd=1.25, col="mediumblue", show.legend = T) +
+  geom_line(aes(y=WEP_millMT), col="black", linetype="12345678", lwd=0.5, show.legend = T) +
+  geom_point(aes(y=WEP_millMT), shape=5, size=1.5, stroke=0.75, col="black", fill="black", show.legend = T) +
+  theme_bw() +
+  ggtitle("") +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  theme(panel.background = element_rect(colour="black", size=1, line="solid")) +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  theme(panel.background = element_blank()) +
+  theme(panel.border = element_blank()) +
+  theme(plot.background = element_blank()) +
+  theme(panel.grid.major.y = element_blank(), panel.grid.minor.y = element_blank()) +
+  theme(panel.grid.major.x = element_blank(), panel.grid.minor.x = element_blank()) +
+  theme(panel.spacing.x = unit(0.5, "lines")) +
+  theme(panel.spacing.y = unit(0.8, "lines")) +
+  theme(legend.position = c(0.87,0.90)) +
+  theme(legend.text = element_text(colour="black", family="Arial", size=10.5), legend.text.align = 0) +
+  theme(legend.key.width = unit(12.75, "mm")) +
+  theme(legend.key.height = unit(4.50, "mm")) +
+  theme(axis.line = element_line(color="black", linetype="solid")) +
+  theme(axis.ticks=element_line(color="black")) +
+  theme(axis.text.y = element_text(family="Arial", color="black", size=10.5)) +
+  theme(axis.text.x = element_text(family="Arial", color="black",  size=10.5)) +
+  theme(panel.grid.major.y = element_blank(), panel.grid.minor.y = element_blank()) +
+  theme(panel.grid.major.x = element_blank(), panel.grid.minor.x = element_blank()) +
+  theme(axis.title.x = element_text(family="Arial", color="black", hjust=0.53, size=12)) +
+  theme(axis.title.y = element_text(family="Arial", color="black", vjust=2, size=12)) +
+  xlab("") +
+  ylab("Predation on Walleye Pollock (mill MT)") +
+  scale_x_continuous(breaks=c(1990,1993,1996,1999,2001,2003,2005,2007,2009,2011,2013,2015), expand = c(0.01, 0.01)) +
+  scale_y_continuous(expand=c(0,0), limits=c(0,3.5), breaks=c(0,0.5,1.0,1.50,2.0,2.5,3.0)) +
+  theme(legend.background = element_rect(fill="transparent")) +
+  theme(plot.margin=unit(c(0,0.5,0,0.5),"cm"))
+
+WEP_Pred_3plus_Bio
+```
+
+Plot age-specific pollock consumption (all predators combined).
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+SumPredWEP_t_stack = subset(SumPredWEP_t, AgeClass != " All Ages")
+SumPredWEP_t_stack$sumMillMT = SumPredWEP_t_stack$sumMT / 1000000
+SumPredWEP_t_plot_stacked = ggplot(SumPredWEP_t_stack, aes(x = Year, y = sumMillMT, group = AgeClass, fill = AgeClass)) +
+  geom_area(position="stack", show.legend=T, col="gray20", lwd=0.1) +
+  scale_fill_manual(values = c("mediumblue", "dodgerblue1", "lightskyblue1", "azure"), name = "Age Class") +
+  ggtitle("") +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  theme(panel.background = element_rect(colour="white", size=1, line="solid")) +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  theme(panel.background = element_blank()) +
+  theme(panel.border = element_blank()) +
+  theme(plot.background = element_blank()) +
+  theme(panel.grid.major.y = element_blank(), panel.grid.minor.y = element_blank()) +
+  theme(panel.grid.major.x = element_blank(), panel.grid.minor.x = element_blank()) +
+  theme(panel.spacing.x = unit(0.5, "lines")) +
+  theme(panel.spacing.y = unit(1.0, "lines")) +
+  theme(legend.position = c(0.95,0.9)) +
+  theme(legend.text = element_text(colour="black", family="Arial", size=10.5), legend.text.align = 0) +
+  theme(legend.key = element_blank()) +
+  theme(legend.key.width = unit(7.5, "mm")) +
+  theme(legend.key.height = unit(3.5, "mm")) +
+  theme(axis.line = element_line(color="black", linetype="solid")) +
+  theme(axis.ticks=element_line(color="black")) +
+  theme(axis.text.y = element_text(family="Arial", color="black", size=11)) +
+  theme(axis.text.x = element_text(family="Arial", color="black",  size=11)) +
+  theme(panel.grid.major.y = element_blank(), panel.grid.minor.y = element_blank()) +
+  theme(panel.grid.major.x = element_blank(), panel.grid.minor.x = element_blank()) +
+  theme(axis.title.x = element_text(family="Arial", color="black", hjust=0.53, size=10)) +
+  theme(axis.title.y = element_text(family="Arial", color="black", vjust=2, size=12.5)) +
+  xlab("") +
+  ylab("Predation on Walleye Pollock (mill MT)") +
+  scale_x_continuous(breaks=c(1990,1993,1996,1999,2001,2003,2005,2007,2009,2011,2013,2015), expand = c(0.01, 0.01)) +
+  scale_y_continuous(expand=c(0,0), limits=c(0,8), breaks=c(0,2,4,6,8)) +
+  theme(legend.background = element_rect(fill="transparent")) +
+  theme(plot.margin=unit(c(0,0.5,0,0.5),"cm"))
+
+SumPredWEP_t_plot_stacked
+```
+
+Plot predator-specific consumption of pollock (all age classes combined).
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+EachPredWEP_t = AllPredData 
+EachPredWEP_t$Species = as.factor(EachPredWEP_t$Species)
+EachPredWEP_t$Species = ordered (EachPredWEP_t$Species, levels = c("ATF", "PC", "PH", "SBL", "WEP"))
+levels(EachPredWEP_t$Species) = c(" Arrowtooth Flounder", " Pacific Cod", " Pacific Halibut", " Sablefish", " Walleye Pollock")
+
+EachPredWEP_t_all = subset(EachPredWEP_t, AgeClass==" All Ages")
+
+
+AllPredWEP_t_all = EachPredWEP_t_all %>%
+  group_by(Year) %>%
+  summarise(millMT = sum(millMT))
+
+AllPredWEP_t_all$Species = " All Ages"
+AllPredWEP_t_all = as.data.frame(AllPredWEP_t_all)
+AllPredWEP_t_all$Year = as.numeric(AllPredWEP_t_all$Year)
+AllPredWEP_t_all$millMT = as.numeric(AllPredWEP_t_all$millMT)
+
+EachPredWEP_t_all_mod = EachPredWEP_t_all[,c("Year", "millMT", "Species")]
+Each_AllPredWEP_t_all = rbind(EachPredWEP_t_all_mod, AllPredWEP_t_all)
+Each_AllPredWEP_t_all$Species = ordered(Each_AllPredWEP_t_all$Species, levels = c(" All", " Arrowtooth Flounder", " Pacific Cod", " Pacific Halibut", " Sablefish", " Walleye Pollock"))
+Each_AllPredWEP_t_all_stack = subset(Each_AllPredWEP_t_all, Species != " All")
+
+EachPredWEP_t_stacked = ggplot(Each_AllPredWEP_t_all_stack, aes(x = Year, y = millMT, group = Species, fill = Species)) +
+  geom_area(position="stack", show.legend=T, col="gray50", lwd=0.1) +
+  scale_fill_manual(values = c("deepskyblue4", "lightseagreen", "olivedrab3", "orange", "yellow")) +
+  ggtitle("") +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  theme(panel.background = element_rect(colour="black", size=1, line="solid")) +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  theme(panel.background = element_blank()) +
+  theme(panel.border = element_blank()) +
+  theme(plot.background = element_blank()) +
+  theme(panel.grid.major.y = element_blank(), panel.grid.minor.y = element_blank()) +
+  theme(panel.grid.major.x = element_blank(), panel.grid.minor.x = element_blank()) +
+  theme(panel.spacing.x = unit(0.5, "lines")) +
+  theme(panel.spacing.y = unit(1.0, "lines")) +
+  theme(legend.position = c(0.85,0.87)) +
+  theme(legend.text = element_text(colour="black", family="Arial", size=10.5), legend.text.align = 0) +
+  theme(legend.key = element_blank()) +
+  theme(legend.key.width = unit(7.5, "mm")) +
+  theme(legend.key.height = unit(3.5, "mm")) +
+  theme(legend.title = element_blank()) +
+  theme(axis.line = element_line(color="black", linetype="solid")) +
+  theme(axis.ticks=element_line(color="black")) +
+  theme(axis.text.y = element_text(family="Arial", color="black", size=10.5)) +
+  theme(axis.text.x = element_text(family="Arial", color="black",  size=10.5)) +
+  theme(panel.grid.major.y = element_blank(), panel.grid.minor.y = element_blank()) +
+  theme(panel.grid.major.x = element_blank(), panel.grid.minor.x = element_blank()) +
+  theme(axis.title.x = element_text(family="Arial", color="black", hjust=0.53, size=12)) +
+  theme(axis.title.y = element_text(family="Arial", color="black", vjust=2, size=12)) +
+  xlab("") +
+  ylab("Predation on Walleye Pollock (mill MT)") +
+  scale_x_continuous(breaks=c(1990,1993,1996,1999,2001,2003,2005,2007,2009,2011,2013,2015), expand = c(0.01, 0.01)) +
+  scale_y_continuous(expand=c(0,0), limits=c(0,8), breaks=c(0,2,4,6,8)) +
+  theme(legend.background = element_rect(fill="transparent")) +
+  theme(plot.margin=unit(c(0,0.5,0,0.5),"cm"))
+
+EachPredWEP_t_stacked
+```
