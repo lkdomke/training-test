@@ -9,7 +9,7 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-# Manuscript Outline
+### Manuscript Outline
 
 - Data Preparation
 - [Analyses](PredationIndex.html)
