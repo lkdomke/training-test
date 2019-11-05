@@ -16,7 +16,10 @@ knitr::opts_chunk$set(echo = TRUE)
 - Results
 - Discussion
 
-
+#### Lia's new section
+1. Introduction to R
+2. Description of CB repository
+3. Some conclusion
 
 ```{r, out.width="50%", echo=FALSE, fig.align='center'}
 
