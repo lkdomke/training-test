@@ -16,7 +16,8 @@ knitr::opts_chunk$set(echo = TRUE)
 - Results
 - Discussion
 
-```{r graphics, fig.align='left', fig.height=5, fig.width=3, echo=FALSE}
+
+```{r graphics, fig.height=5, fig.width=3, echo=FALSE}
 knitr::include_graphics("Barnes_PH_ATF_IMG_1828.JPG")
 ```
 
