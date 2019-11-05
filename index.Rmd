@@ -1,5 +1,5 @@
 ---
-title: "My manscript page"
+title: "Predation and Trophic Stability in the Gulf of Alaska"
 author: "Cheryl Barnes"
 date: "11/5/2019"
 output: html_document
