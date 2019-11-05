@@ -1,2 +1,2 @@
 # training-test <br/>
-The test repository for NCEAS training.
+The test repository for <i>NCEAS</i> training.
