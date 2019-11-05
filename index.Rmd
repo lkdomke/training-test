@@ -17,7 +17,11 @@ knitr::opts_chunk$set(echo = TRUE)
 - Discussion
 
 
+<<<<<<< HEAD
 ```{r graphics, fig.height=1.5, fig.width=2.5, echo=FALSE}
+=======
+```{r graphics, fig.height=3, fig.width=5, echo=FALSE}
+>>>>>>> 45792d88ec89a5150645a7bc1821b6095b802f11
 knitr::include_graphics("Katie_Zach_Helen_PullingOtoliths_KB__2696.jpg")
 ```
 
