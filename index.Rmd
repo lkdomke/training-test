@@ -27,7 +27,8 @@ Well here's another list of my favourite types of groundfish
 3. rockfish
 
 ###### Baby shark subsection
-  - baby shark do do 
+  - baby shark do do
+  - new item
 
 ```{r, out.width="50%", echo=FALSE, fig.align='center'}
 
