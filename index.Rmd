@@ -16,7 +16,15 @@ knitr::opts_chunk$set(echo = TRUE)
 - Results
 - Discussion
 
+#### Lia's new section
+1. Introduction to R
+2. Description of CB repository
+3. Some conclusion
 
+Well here's another list of my favourite types of groundfish
+1. halibut
+2. probably not arrowtooth
+3. rockfish
 
 ```{r, out.width="50%", echo=FALSE, fig.align='center'}
 
