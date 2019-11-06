@@ -26,7 +26,8 @@ Well here's another list of my favourite types of groundfish
 2. probably not arrowtooth
 3. rockfish
 
-baby shark do do 
+###### Baby shark subsection
+  - baby shark do do 
 
 ```{r, out.width="50%", echo=FALSE, fig.align='center'}
 
